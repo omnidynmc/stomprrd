@@ -14,7 +14,7 @@ $tt = $config['translate'];
 $translate_table = array();
 
 foreach ($tt as $key => $value) {
-  $translate_table[$value["id"]] = $value["name"];
+  $translate_table[$value["id"]] = $value;
 } // for
 
 print_r($translate_table);
@@ -153,13 +153,13 @@ function update_rrd($file, $label, $timestamp, $value) {
   $updater->update(array($label => $value), $timestamp);
 } // update_rrd
 
-function graph_rrd($rrd_file, $label, $png_file) {
+function graph_rrd($rrd_file, $label, $png_file, $veritcal_label="unknown") {
   $graphObj = new RRDGraph($png_file);
   $graphObj->setOptions(
     array(
         "--start" => time()-28800,
         "--end" => time(),
-        "--vertical-label" => "m/s",
+        "--vertical-label" => $vertical_label,
         "DEF:myspeed=$rrd_file:$label:AVERAGE",
 //        "CDEF:realspeed=myspeed,1000,*",
         "LINE1:myspeed#FF0000"
@@ -172,7 +172,8 @@ function add_data($json) {
   global $translate_table;
 
   if ( !array_key_exists($json->id, $translate_table) ) return;
-  $file = $translate_table[$json->id];
+  $table = $translate_table[$json->id];
+  $file = $table["name"];
 
   print_r($json);
 
@@ -193,6 +194,6 @@ function add_data($json) {
     create_rrd($rrd_file, $label, $json);
   } // if
   update_rrd($rrd_file, $label, $json->timestamp, $json->value);
-  graph_rrd($rrd_file, $label, $png_file);
+  graph_rrd($rrd_file, $label, $png_file, $table["vertical_label"]);
 } // add_data
 

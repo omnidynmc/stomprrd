@@ -2,3 +2,12 @@ translate:
   sendq:
     id: aprsfeed.uplink1.num.sendq.bytes
     name: aprsfeed_sendq
+    vertical_label: "bytes"
+  age:
+    id: aprs_stats.rate.age
+    name: aprsfeed_age
+    vertical_label: "seconds"
+  insert:
+    id: time.sql.insert
+    name: aprsfeed_insert
+    vertical_label: "seconds"
