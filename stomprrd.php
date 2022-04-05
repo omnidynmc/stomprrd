@@ -4,6 +4,21 @@
 $queue  = '/topic/stats.prod.*';
 $id = uniqid("");
 
+$config = yaml_parse_file(
+  'config.yml',
+);
+
+print_r($config);
+
+$tt = $config['translate'];
+$translate_table = array();
+
+foreach ($tt as $key => $value) {
+  $translate_table[$value["id"]] = $value["name"];
+} // for
+
+print_r($translate_table);
+
 $stomp = NULL;
 
 $stomp_connect_retry = 15;
@@ -11,7 +26,7 @@ $stomp_count = 0;
 
 // read a frame
 while(1) {
-  $ok = connect_stomp("localhost:61613", "stompstats", "stompstats", $stomp);
+  $ok = connect_stomp("openaprs:61613", "stompstats", "stompstats", $stomp);
   if (!$ok) {
     $stomp_count++;
     sleepfor($stomp_connect_retry);
@@ -49,8 +64,8 @@ while(1) {
     } // catch
 
 //    echo $frame->body . "\n";
-    print_r( json_decode($frame->body) );
-    add_data( json_decode($frame->body) );
+    $json = json_decode($frame->body);
+    add_data($json);
 
     if ($next_ack < time() || $ack % 512 == 0) {
       //      var_dump($frame);
@@ -102,16 +117,18 @@ function create_rrd($rrd_file, $label, &$json) {
 
   $creator = new RRDCreator($rrd_file, time() - 10, 30);
 
-  $creator->addDataSource("$label:$type:600:0:U");
-//  $creator->addArchive("AVERAGE:0.5:1:24");
-//  $creator->addArchive("AVERAGE:0.5:6:10");
+  echo "Graph label " . $label . ", type " . $type . "\n";
+
+//  $creator->addDataSource("$label:$type:600:0:U");
+  $creator->addDataSource("$label:GAUGE:600:0:U");
+//  $creator->addArchive("RRA:AVERAGE:0.5:1:24");
+//  $creator->addArchive("RRA:AVERAGE:0.5:6:10");
 
   $creator->addArchive("HWPREDICT:500:0.1:0.0035:288:2");
   $creator->addArchive("SEASONAL:288:0.1:1:smoothing-window=0.1");
   $creator->addArchive("DEVPREDICT:500:4");
   $creator->addArchive("DEVSEASONAL:288:0.1:1:smoothing-window=0.1");
   $creator->addArchive("FAILURES:500:6:9:4");
-  $creator->addArchive("AVERAGE:0.5:1:500");
   $creator->addArchive("AVERAGE:0.5:1:500");
   $creator->addArchive("AVERAGE:0.5:1:600");
   $creator->addArchive("AVERAGE:0.5:3:260");
@@ -120,7 +137,6 @@ function create_rrd($rrd_file, $label, &$json) {
   $creator->addArchive("AVERAGE:0.5:24:500");
   $creator->addArchive("AVERAGE:0.5:24:775");
   $creator->addArchive("AVERAGE:0.5:288:797");
-  $creator->addArchive("MAX:0.5:1:500");
   $creator->addArchive("MAX:0.5:1:500");
   $creator->addArchive("MAX:0.5:1:600");
   $creator->addArchive("MAX:0.5:3:260");
@@ -153,20 +169,30 @@ function graph_rrd($rrd_file, $label, $png_file) {
 } // graph_rrd
 
 function add_data($json) {
-  $file = $json->id;
+  global $translate_table;
 
-  $rrd_file = dirname(__FILE__) . "/rrd/$file.rrd";
-  $png_file = dirname(__FILE__) . "/png/$file.png";
+  if ( !array_key_exists($json->id, $translate_table) ) return;
+  $file = $translate_table[$json->id];
 
-  $label = str_replace(" ", "", $json->label);
+  print_r($json);
+
+
+  echo "Writing to " . $file . "\n";
+
+  $path = "/var/www/html";
+//  $rrd_file = dirname(__FILE__) . "/rrd/$file.rrd";
+//  $png_file = dirname(__FILE__) . "/png/$file.png";
+  $rrd_file = $path . "/rrd/$file.rrd";
+  $png_file = $path . "/png/$file.png";
+
+//  $label = str_replace(" ", "", $json->label);
+  $label = $file;
 
   if (!file_exists($rrd_file)) {
     // must create the rrd file
     create_rrd($rrd_file, $label, $json);
   } // if
-
   update_rrd($rrd_file, $label, $json->timestamp, $json->value);
   graph_rrd($rrd_file, $label, $png_file);
 } // add_data
-
 

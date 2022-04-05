@@ -1,0 +1,4 @@
+translate:
+  sendq:
+    id: aprsfeed.uplink1.num.sendq.bytes
+    name: aprsfeed_sendq
