@@ -171,6 +171,7 @@ function graph_rrd($rrd_file, $label, $png_file, $vertical_label="unknown") {
 function add_data($json) {
   global $translate_table;
 
+  echo "Looing for " . $json->id . "\n";
   if ( !array_key_exists($json->id, $translate_table) ) return;
   $table = $translate_table[$json->id];
   $file = $table["name"];
