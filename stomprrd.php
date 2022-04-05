@@ -153,7 +153,7 @@ function update_rrd($file, $label, $timestamp, $value) {
   $updater->update(array($label => $value), $timestamp);
 } // update_rrd
 
-function graph_rrd($rrd_file, $label, $png_file, $veritcal_label="unknown") {
+function graph_rrd($rrd_file, $label, $png_file, $vertical_label="unknown") {
   $graphObj = new RRDGraph($png_file);
   $graphObj->setOptions(
     array(
