@@ -4,10 +4,10 @@ translate:
     name: aprsfeed_sendq
     vertical_label: "bytes"
   age:
-    id: aprs_stats.rate.age
+    id: rsinject.worker.aprs_stats.rate.age
     name: aprsfeed_age
     vertical_label: "seconds"
   insert:
-    id: time.sql.insert
+    id: prsinject.worker.time.sql.insert
     name: aprsfeed_insert
     vertical_label: "seconds"
