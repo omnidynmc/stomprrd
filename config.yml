@@ -11,11 +11,11 @@ translate:
     id: aprsinject.worker1.time.sql.insert
     name: aprsfeed_insert
     vertical_label: "seconds"
-  age:
+  age2:
     id: aprsinject.worker2.aprs_stats.rate.age
     name: aprsfeed_age
     vertical_label: "seconds"
-  insert:
+  insert2:
     id: aprsinject.worker2.time.sql.insert
     name: aprsfeed_insert
     vertical_label: "seconds"
