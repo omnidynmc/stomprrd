@@ -17,11 +17,11 @@ translate:
     vertical_label: "seconds"
   message_rate:
     id: aprsinject.worker1.aprs_stats.rate.message
-    name: aprsinject_messages
+    name: aprsinject_msgs
     vertical_label: "seconds"
   reject_dup:
     id: aprsinject.worker1.aprs_stats.rate.reject.duplicate
-    name: aprsinject_rejectdup
+    name: aprsinject_rejdup
     vertical_label: "seconds"
   reject_invalid:
     id: aprsinject.worker1.aprs_stats.rate.reject.invparse
