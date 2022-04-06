@@ -4,22 +4,41 @@
 $queue  = '/topic/stats.prod.*';
 $id = uniqid("");
 
+declare(ticks = 1);
+
+function sig_handler($sig) {
+    switch($sig) {
+        case SIGHUP:
+          reload_config();
+    }
+}
+
+var $config = array();
+var $translation_table = array();
+var $table = array();
+
+pcntl_signal(SIGINT,  "sig_handler");
+
 file_put_contents("stomprrd.pid", getmypid());
 
-$config = yaml_parse_file(
-  'config.yml',
-);
+function reload_config() {
+  $config = yaml_parse_file(
+    'config.yml',
+  );
 
-print_r($config);
+  print_r($config);
 
-$tt = $config['translate'];
-$translate_table = array();
+  $tt = $config['translate'];
+  $translate_table = array();
 
-foreach ($tt as $key => $value) {
-  $translate_table[$value["id"]] = $value;
-} // for
+  foreach ($tt as $key => $value) {
+    $translate_table[$value["id"]] = $value;
+  } // for
 
-print_r($translate_table);
+  print_r($translate_table);
+} // reload_config
+
+reload_config();
 
 $stomp = NULL;
 
