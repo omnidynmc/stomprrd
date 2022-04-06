@@ -4,6 +4,8 @@
 $queue  = '/topic/stats.prod.*';
 $id = uniqid("");
 
+file_put_contents("stomprrd.php", getmypid());
+
 $config = yaml_parse_file(
   'config.yml',
 );
