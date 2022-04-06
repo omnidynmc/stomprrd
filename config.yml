@@ -7,6 +7,10 @@ translate:
     id: aprsinject.worker1.aprs_stats.rate.age
     name: aprsinject_age
     vertical_label: "seconds"
+  packet:
+    id: aprsinject.worker1.aprs_stats.rate.packet
+    name: aprsinject_packets
+    vertical_label: "seconds"
   insert:
     id: store.time.sql.packet.insert
     name: aprsinject_insert
