@@ -23,6 +23,8 @@ pcntl_signal(SIGINT,  "sig_handler");
 file_put_contents("stomprrd.pid", getmypid());
 
 function reload_config() {
+  global $config, $translation_table, $table;
+
   $config = yaml_parse_file(
     'config.yml',
   );
