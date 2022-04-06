@@ -13,7 +13,7 @@ translate:
     vertical_label: "seconds"
   position_rate:
     id: aprsinject.worker1.aprs_stats.rate.position
-    name: aprsinject_positions
+    name: aprsinject_position
     vertical_label: "seconds"
   message_rate:
     id: aprsinject.worker1.aprs_stats.rate.message
