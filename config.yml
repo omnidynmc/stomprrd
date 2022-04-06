@@ -7,9 +7,33 @@ translate:
     id: aprsinject.worker1.aprs_stats.rate.age
     name: aprsinject_age
     vertical_label: "seconds"
-  packet:
+  packet_rate:
     id: aprsinject.worker1.aprs_stats.rate.packet
     name: aprsinject_packets
+    vertical_label: "seconds"
+  position_rate:
+    id: aprsinject.worker1.aprs_stats.rate.position
+    name: aprsinject_positions
+    vertical_label: "seconds"
+  message_rate:
+    id: aprsinject.worker1.aprs_stats.rate.message
+    name: aprsinject_messages
+    vertical_label: "seconds"
+  reject_dup:
+    id: aprsinject.worker1.aprs_stats.rate.reject.duplicate
+    name: aprsinject_rejectdup
+    vertical_label: "seconds"
+  reject_invalid:
+    id: aprsinject.worker1.aprs_stats.rate.reject.invparse
+    name: aprsinject_invparse
+    vertical_label: "seconds"
+  reject_toofast:
+    id: aprsinject.worker1.aprs_stats.rate.reject.tofast
+    name: aprsinject_toofast
+    vertical_label: "seconds"
+  reject_toosoon:
+    id: aprsinject.worker1.aprs_stats.rate.reject.tosoon
+    name: aprsinject_toosoon
     vertical_label: "seconds"
   insert:
     id: store.time.sql.packet.insert
