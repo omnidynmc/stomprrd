@@ -15,7 +15,7 @@ function sig_handler($sig) {
 }
 
 $config = array();
-$translation_table = array();
+$translate_table = array();
 $table = array();
 
 pcntl_signal(SIGINT,  "sig_handler");
@@ -23,7 +23,7 @@ pcntl_signal(SIGINT,  "sig_handler");
 file_put_contents("stomprrd.pid", getmypid());
 
 function reload_config() {
-  global $config, $translation_table, $table;
+  global $config, $translate_table, $table;
 
   $config = yaml_parse_file(
     'config.yml',
