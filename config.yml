@@ -5,9 +5,9 @@ translate:
     vertical_label: "bytes"
   age:
     id: aprsinject.worker1.aprs_stats.rate.age
-    name: aprsfeed_age
+    name: aprsinject_age
     vertical_label: "seconds"
   insert:
-    id: aprsinject.worker1.time.sql.insert
-    name: aprsfeed_insert
+    id: store.time.sql.packet.insert
+    name: aprsinject_insert
     vertical_label: "seconds"
