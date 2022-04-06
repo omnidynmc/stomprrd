@@ -39,3 +39,15 @@ translate:
     id: store.time.sql.packet.insert
     name: aprsinject_insert
     vertical_label: "seconds"
+  position_insert:
+    id: store.time.sql.position.insert
+    name: aprsinject_posin
+    vertical_label: "seconds"
+  message_insert:
+    id: store.time.sql.message.insert
+    name: aprsinject_msgin
+    vertical_label: "seconds"
+  raw_insert:
+    id: store.time.sql.raw.insert
+    name: aprsinject_rawin
+    vertical_label: "seconds"
