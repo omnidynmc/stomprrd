@@ -1,10 +1,11 @@
 #!/usr/bin/php
 <?php
 
+declare(ticks = 1);
+
 $queue  = '/topic/stats.prod.*';
 $id = uniqid("");
 
-declare(ticks = 1);
 
 function sig_handler($sig) {
     switch($sig) {
@@ -13,9 +14,9 @@ function sig_handler($sig) {
     }
 }
 
-var $config = array();
-var $translation_table = array();
-var $table = array();
+$config = array();
+$translation_table = array();
+$table = array();
 
 pcntl_signal(SIGINT,  "sig_handler");
 
