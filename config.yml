@@ -51,3 +51,7 @@ translate:
     id: store.time.sql.raw.insert
     name: aprsinject_rawin
     vertical_label: "seconds"
+  position_memcached_insert:
+    id: store.time.memcached.position.insert
+    name: aprsinject_mempos
+    vertical_label: "seconds"
