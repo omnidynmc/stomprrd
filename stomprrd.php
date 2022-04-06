@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php
 
-declare(ticks = 1);
+pcntl_async_signals(true)
 
 $queue  = '/topic/stats.prod.*';
 $id = uniqid("");
