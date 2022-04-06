@@ -55,3 +55,11 @@ translate:
     id: store.time.memcached.position.insert
     name: aprsinject_mempos
     vertical_label: "seconds"
+  handle:
+    id: aprsinject.worker1.time.run.handle
+    name: aprsinject_handle
+    vertical_label: "seconds"
+  parse:
+    id: aprsinject.worker1.time.aprs.parse
+    name: aprsinject_parse
+    vertical_label: "seconds"
