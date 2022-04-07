@@ -36,26 +36,27 @@ function reload_config() {
 
   print_r($config);
 
-  $tt = $config['translate'];
   $translate_table = array();
 
-  foreach ($tt as $key => $value) {
-    $identifier = $value["id"];
-    if (array_key_exists($identifier, $translate_table)) {
-      $v = &$translate_table[$identifier];
+  foreach($config AS $section) {
+    foreach ($section['data'] as $key => $value) {
+      $identifier = $value["id"];
+      if (array_key_exists($identifier, $translate_table)) {
+        $v = &$translate_table[$identifier];
 
-      if (!array_key_exists("id", $v)) {
-        array_push($v, $value);
+        if (!array_key_exists("id", $v)) {
+          array_push($v, $value);
+        } // if
+        else {
+          $tmp = $translate_table[$identifier];
+          $v = array($tmp, $value);
+        } // else
+
+        continue;
       } // if
-      else {
-        $tmp = $translate_table[$identifier];
-        $v = array($tmp, $value);
-      } // else
 
-      continue;
-    } // if
-
-    $translate_table[$identifier] = $value;
+      $translate_table[$identifier] = $value;
+    } // for
   } // for
 
   print_r($translate_table);

@@ -1,100 +1,113 @@
-translate:
-  sendq:
-    id: aprsfeed.uplink1.num.sendq.bytes
-    name: aprsfeed_sendq
-    ylabel: "bytes"
-  age:
-    id: aprsinject.worker1.aprs_stats.rate.age
-    name: aprsinject_age
-    ylabel: "seconds"
-    title: "APRS Packet Age to Injector"
-  packet_rate:
-    id: aprsinject.worker1.aprs_stats.rate.packet
-    name: aprsinject_packets
-    ylabel: "seconds"
-  position_rate:
-    id: aprsinject.worker1.aprs_stats.rate.position
-    name: aprsinject_position
-    ylabel: "rate"
-  message_rate:
-    id: aprsinject.worker1.aprs_stats.rate.message
-    name: aprsinject_msgs
-    ylabel: "rate"
-  reject_dup:
-    id: aprsinject.worker1.aprs_stats.rate.reject.duplicate
-    name: aprsinject_rejdup
-    ylabel: "seconds"
-  reject_invalid:
-    id: aprsinject.worker1.aprs_stats.rate.reject.invparse
-    name: aprsinject_invparse
-    ylabel: "seconds"
-    title: "Invalid Parsing"
-  reject_toofast:
-    id: aprsinject.worker1.aprs_stats.rate.reject.tofast
-    name: aprsinject_toofast
-    ylabel: "seconds"
-    title: "Packets Too Fast"
-  reject_toosoon:
-    id: aprsinject.worker1.aprs_stats.rate.reject.tosoon
-    name: aprsinject_toosoon
-    ylabel: "seconds"
-    title: "Packets Too Soon"
-  insert:
-    id: store.time.sql.packet.insert
-    name: aprsinject_insert
-    ylabel: "seconds"
-    title: "Packet Insert Time"
-  position_insert:
-    id: store.time.sql.position.insert
-    name: aprsinject_posin
-    ylabel: "seconds"
-    title: "Inject Position Time"
-  message_insert:
-    id: store.time.sql.message.insert
-    name: aprsinject_msgin
-    ylabel: "seconds"
-    title: "Inject Message Time"
-  raw_insert:
-    id: store.time.sql.raw.insert
-    name: aprsinject_rawin
-    ylabel: "seconds"
-  position_memcached_insert:
-    id: store.time.memcached.position.insert
-    name: aprsinject_mempos
-    ylabel: "seconds"
-  handle:
-    id: aprsinject.worker1.time.run.handle
-    name: aprsinject_handle
-    ylabel: "seconds"
-    title: "APRS Injection Handle Time"
-  capacity:
-    id: aprsinject.worker1.time.run.handle
-    name: aprsinject_cap
-    ylabel: "pps"
-    equation: 1 / x
-    title: "APRSInjector Capacity"
-  parse:
-    id: aprsinject.worker1.time.aprs.parse
-    name: aprsinject_parse
-    ylabel: "seconds"
-    title: "APRS Parse Time"
-  feed:
-    id: aprsfeed.uplink1.num.packets
-    name: aprsfeed_pps
-    ylabel: "pps"
-    title: "APRSFeed Packets/s"
-  preprocess:
-    id: aprsinject.worker1.time.run.preprocess
-    name: aprsfeed_preproc
-    ylabel: "seconds"
-    title: "Preprocess Time"
-  process:
-    id: aprsinject.worker1.time.run.process
-    name: aprsfeed_proc
-    ylabel: "seconds"
-    title: "Process Time"
-  allinsert:
-    id: aprsinject.worker1.time.run.inject
-    name: aprsfeed_insrt
-    ylabel: "seconds"
-    title: "All Insert"
+time:
+  title: APRS Inject Timing
+  data:
+    age:
+      id: aprsinject.worker1.aprs_stats.rate.age
+      name: aprsinject_age
+      ylabel: "seconds"
+      title: "APRS Packet Age to Injector"
+    insert:
+      id: store.time.sql.packet.insert
+      name: aprsinject_insert
+      ylabel: "seconds"
+      title: "Packet Insert Time"
+    position_insert:
+      id: store.time.sql.position.insert
+      name: aprsinject_posin
+      ylabel: "seconds"
+      title: "Inject Position Time"
+    message_insert:
+      id: store.time.sql.message.insert
+      name: aprsinject_msgin
+      ylabel: "seconds"
+      title: "Inject Message Time"
+    raw_insert:
+      id: store.time.sql.raw.insert
+      name: aprsinject_rawin
+      ylabel: "seconds"
+    position_memcached_insert:
+      id: store.time.memcached.position.insert
+      name: aprsinject_mempos
+      ylabel: "seconds"
+      title: "Inject Memcached Lastposition"
+    handle:
+      id: aprsinject.worker1.time.run.handle
+      name: aprsinject_handle
+      ylabel: "seconds"
+      title: "APRS Injection Handle Time"
+    capacity:
+      id: aprsinject.worker1.time.run.handle
+      name: aprsinject_cap
+      ylabel: "pps"
+      equation: 1 / x
+      title: "APRSInjector Capacity"
+    parse:
+      id: aprsinject.worker1.time.aprs.parse
+      name: aprsinject_parse
+      ylabel: "seconds"
+      title: "APRS Parse Time"
+    feed:
+      id: aprsfeed.uplink1.num.packets
+      name: aprsfeed_pps
+      ylabel: "pps"
+      title: "APRSFeed Packets/s"
+    preprocess:
+      id: aprsinject.worker1.time.run.preprocess
+      name: aprsfeed_preproc
+      ylabel: "seconds"
+      title: "Preprocess Time"
+    process:
+      id: aprsinject.worker1.time.run.process
+      name: aprsfeed_proc
+      ylabel: "seconds"
+      title: "Process Time"
+    allinsert:
+      id: aprsinject.worker1.time.run.inject
+      name: aprsfeed_insrt
+      ylabel: "seconds"
+      title: "All Insert"
+rates:
+  title: APRS Rates
+  data:
+    packet_rate:
+      id: aprsinject.worker1.aprs_stats.rate.packet
+      name: aprsinject_packets
+      ylabel: "seconds"
+    position_rate:
+      id: aprsinject.worker1.aprs_stats.rate.position
+      name: aprsinject_position
+      ylabel: "rate"
+    message_rate:
+      id: aprsinject.worker1.aprs_stats.rate.message
+      name: aprsinject_msgs
+      ylabel: "rate"
+feed:
+  title: APRS Feed
+  data:
+    sendq:
+      id: aprsfeed.uplink1.num.sendq.bytes
+      name: aprsfeed_sendq
+      ylabel: "bytes"
+rejections:
+  title: Rejected Packets
+  data:
+    reject_dup:
+      id: aprsinject.worker1.aprs_stats.rate.reject.duplicate
+      name: aprsinject_rejdup
+      ylabel: "rate"
+      title: "Reject Duplicates"
+    reject_invalid:
+      id: aprsinject.worker1.aprs_stats.rate.reject.invparse
+      name: aprsinject_invparse
+      ylabel: "seconds"
+      title: "Invalid Parsing"
+    reject_toofast:
+      id: aprsinject.worker1.aprs_stats.rate.reject.tofast
+      name: aprsinject_toofast
+      ylabel: "seconds"
+      title: "Packets Too Fast"
+    reject_toosoon:
+      id: aprsinject.worker1.aprs_stats.rate.reject.tosoon
+      name: aprsinject_toosoon
+      ylabel: "seconds"
+      title: "Packets Too Soon"
