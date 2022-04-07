@@ -44,10 +44,12 @@ translate:
     id: store.time.sql.position.insert
     name: aprsinject_posin
     ylabel: "seconds"
+    title: "Inject Position Time"
   message_insert:
     id: store.time.sql.message.insert
     name: aprsinject_msgin
     ylabel: "seconds"
+    title: "Inject Message Time"
   raw_insert:
     id: store.time.sql.raw.insert
     name: aprsinject_rawin
