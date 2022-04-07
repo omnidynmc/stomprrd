@@ -197,14 +197,14 @@ function update_rrd($file, $label, $timestamp, $value) {
   $updater->update(array($label => $value), $timestamp);
 } // update_rrd
 
-function graph_rrd($rrd_file, $label, $png_file, $vertical_label="unknown") {
+function graph_rrd($rrd_file, $label, $png_file, $work) {
   $graphObj = new RRDGraph($png_file);
   $graphObj->setOptions(
     array(
         "--start" => time()-28800,
         "--end" => time(),
-        "--title=$label",
-        "--vertical-label" => $vertical_label,
+        "--title" => isset($work["title"]) ? $work["title"] ? $work["vertical_label"],
+        "--vertical-label" => $work["vertical_label"],
         "DEF:$label=$rrd_file:$label:AVERAGE",
 //        "CDEF:$label=my$label,300,*",
         "COMMENT:\\n",
@@ -267,7 +267,7 @@ function add_data($json) {
     } // if
 
     update_rrd($rrd_file, $label, $json->timestamp, $value);
-    graph_rrd($rrd_file, $label, $png_file, $obj["vertical_label"]);
+    graph_rrd($rrd_file, $label, $png_file, $work);
   } // foreach
 
 } // add_data

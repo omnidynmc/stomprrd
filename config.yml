@@ -64,6 +64,7 @@ translate:
     name: aprsinject_cap
     vertical_label: "pps"
     equation: 1 / x
+    title: "APRSInjector Capacity"
   parse:
     id: aprsinject.worker1.time.aprs.parse
     name: aprsinject_parse
@@ -72,3 +73,4 @@ translate:
     id: aprsfeed.uplink1.num.packets
     name: aprsfeed_pps
     vertical_label: "pps"
+    title: "Packets/s"
