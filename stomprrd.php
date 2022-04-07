@@ -104,9 +104,12 @@ while(1) {
     } // try
     catch(StompException $ex) {
       // error disconnect time
+      echo "*** ERROR: Could not read frame!\n";
       $stomp = NULL;
       break;
     } // catch
+
+    if ($stomp == NULL) break;
 
 //    echo $frame->body . "\n";
     $json = json_decode($frame->body);
