@@ -2,75 +2,75 @@ translate:
   sendq:
     id: aprsfeed.uplink1.num.sendq.bytes
     name: aprsfeed_sendq
-    vertical_label: "bytes"
+    ylabel: "bytes"
   age:
     id: aprsinject.worker1.aprs_stats.rate.age
     name: aprsinject_age
-    vertical_label: "seconds"
+    ylabel: "seconds"
   packet_rate:
     id: aprsinject.worker1.aprs_stats.rate.packet
     name: aprsinject_packets
-    vertical_label: "seconds"
+    ylabel: "seconds"
   position_rate:
     id: aprsinject.worker1.aprs_stats.rate.position
     name: aprsinject_position
-    vertical_label: "seconds"
+    ylabel: "seconds"
   message_rate:
     id: aprsinject.worker1.aprs_stats.rate.message
     name: aprsinject_msgs
-    vertical_label: "seconds"
+    ylabel: "seconds"
   reject_dup:
     id: aprsinject.worker1.aprs_stats.rate.reject.duplicate
     name: aprsinject_rejdup
-    vertical_label: "seconds"
+    ylabel: "seconds"
   reject_invalid:
     id: aprsinject.worker1.aprs_stats.rate.reject.invparse
     name: aprsinject_invparse
-    vertical_label: "seconds"
+    ylabel: "seconds"
   reject_toofast:
     id: aprsinject.worker1.aprs_stats.rate.reject.tofast
     name: aprsinject_toofast
-    vertical_label: "seconds"
+    ylabel: "seconds"
   reject_toosoon:
     id: aprsinject.worker1.aprs_stats.rate.reject.tosoon
     name: aprsinject_toosoon
-    vertical_label: "seconds"
+    ylabel: "seconds"
   insert:
     id: store.time.sql.packet.insert
     name: aprsinject_insert
-    vertical_label: "seconds"
+    ylabel: "seconds"
   position_insert:
     id: store.time.sql.position.insert
     name: aprsinject_posin
-    vertical_label: "seconds"
+    ylabel: "seconds"
   message_insert:
     id: store.time.sql.message.insert
     name: aprsinject_msgin
-    vertical_label: "seconds"
+    ylabel: "seconds"
   raw_insert:
     id: store.time.sql.raw.insert
     name: aprsinject_rawin
-    vertical_label: "seconds"
+    ylabel: "seconds"
   position_memcached_insert:
     id: store.time.memcached.position.insert
     name: aprsinject_mempos
-    vertical_label: "seconds"
+    ylabel: "seconds"
   handle:
     id: aprsinject.worker1.time.run.handle
     name: aprsinject_handle
-    vertical_label: "seconds"
+    ylabel: "seconds"
   capacity:
     id: aprsinject.worker1.time.run.handle
     name: aprsinject_cap
-    vertical_label: "pps"
+    ylabel: "pps"
     equation: 1 / x
     title: "APRSInjector Capacity"
   parse:
     id: aprsinject.worker1.time.aprs.parse
     name: aprsinject_parse
-    vertical_label: "seconds"
+    ylabel: "seconds"
   feed:
     id: aprsfeed.uplink1.num.packets
     name: aprsfeed_pps
-    vertical_label: "pps"
+    ylabel: "pps"
     title: "Packets/s"

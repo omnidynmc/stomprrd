@@ -198,13 +198,16 @@ function update_rrd($file, $label, $timestamp, $value) {
 } // update_rrd
 
 function graph_rrd($rrd_file, $label, $png_file, $work) {
+  $ylabel = safe_key("ylabel", $work, "y axis");
+  $title = safe_key("title", $work, $label);
+
   $graphObj = new RRDGraph($png_file);
   $graphObj->setOptions(
     array(
         "--start" => time()-28800,
         "--end" => time(),
-        "--title" => isset($work["title"]) ? $work["title"] ? $work["vertical_label"],
-        "--vertical-label" => $work["vertical_label"],
+        "--title" => $title,
+        "--vertical-label" => $ylabel,
         "DEF:$label=$rrd_file:$label:AVERAGE",
 //        "CDEF:$label=my$label,300,*",
         "COMMENT:\\n",
@@ -214,6 +217,10 @@ function graph_rrd($rrd_file, $label, $png_file, $work) {
   );
   $graphObj->save();
 } // graph_rrd
+
+function safe_key($key, $map, $def="") {
+  return array_key_exists($key, $map) ? $map[$key] : $def;
+} // safe_key
 
 function add_data($json) {
   global $translate_table;
