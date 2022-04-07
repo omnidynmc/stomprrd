@@ -225,7 +225,7 @@ function add_data($json) {
 
   print_r($work);
 
-  foreach ($work AS $key => $obj) {
+  foreach ($work AS $obj) {
     $file = $obj["name"];
 
     print_r($json);
