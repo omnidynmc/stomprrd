@@ -109,7 +109,10 @@ while(1) {
       break;
     } // catch
 
-    if ($frame == NULL) break;
+    if ($frame == NULL) {
+      echo "*** ERROR: Caughtn null frame!\n";
+      break;
+    } // if
 
 //    echo $frame->body . "\n";
     $json = json_decode($frame->body);
