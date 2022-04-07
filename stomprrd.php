@@ -41,7 +41,7 @@ function reload_config() {
 
   foreach ($tt as $key => $value) {
     $identifier = $value["id"];
-    if (array_key_exsists($translate_table, $identifier)) {
+    if (array_key_exists($identifier, $translate_table)) {
       $v = &$translate_table[$identifier];
       if (is_array($v)) {
         array_push($v, $value);
