@@ -216,9 +216,10 @@ function add_data($json) {
 
   $path = "/var/www/html";
 
-  echo "Looing for " . $json->id . "\n";
+  echo "Looking for " . $json->id . "\n";
   if ( !array_key_exists($json->id, $translate_table) ) return;
   $table = $translate_table[$json->id];
+  print_r($table);
 
   $work = is_array($table) ? $table : array($table);
 
