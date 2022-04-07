@@ -79,3 +79,18 @@ translate:
     name: aprsfeed_pps
     ylabel: "pps"
     title: "APRSFeed Packets/s"
+  preprocess:
+    id:  aprsinject.worker1.time.run.preprocess
+    name: aprsfeed_preproc
+    ylabel: "seconds"
+    title: "Preprocess Time"
+  process:
+    id:  aprsinject.worker1.time.run.process
+    name: aprsfeed_proc
+    ylabel: "seconds"
+    title: "Process Time"
+  allinsert:
+    id:  aprsinject.worker1.time.run.insert
+    name: aprsfeed_insrt
+    ylabel: "pps"
+    title: "All Insert"
