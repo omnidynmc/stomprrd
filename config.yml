@@ -15,11 +15,11 @@ translate:
   position_rate:
     id: aprsinject.worker1.aprs_stats.rate.position
     name: aprsinject_position
-    ylabel: "seconds"
+    ylabel: "rate"
   message_rate:
     id: aprsinject.worker1.aprs_stats.rate.message
     name: aprsinject_msgs
-    ylabel: "seconds"
+    ylabel: "rate"
   reject_dup:
     id: aprsinject.worker1.aprs_stats.rate.reject.duplicate
     name: aprsinject_rejdup
@@ -28,18 +28,22 @@ translate:
     id: aprsinject.worker1.aprs_stats.rate.reject.invparse
     name: aprsinject_invparse
     ylabel: "seconds"
+    title: "Invalid Parsing"
   reject_toofast:
     id: aprsinject.worker1.aprs_stats.rate.reject.tofast
     name: aprsinject_toofast
     ylabel: "seconds"
+    title: "Packets Too Fast"
   reject_toosoon:
     id: aprsinject.worker1.aprs_stats.rate.reject.tosoon
     name: aprsinject_toosoon
     ylabel: "seconds"
+    title: "Packets Too Soon"
   insert:
     id: store.time.sql.packet.insert
     name: aprsinject_insert
     ylabel: "seconds"
+    title: "Packet Insert Time"
   position_insert:
     id: store.time.sql.position.insert
     name: aprsinject_posin
