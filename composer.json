@@ -1,0 +1,11 @@
+{
+    "repositories": [
+        {
+            "url": "https://github.com/mossadal/math-parser.git",
+            "type": "git"
+        }
+    ],
+    "require": {
+        "MathParser": "~1.3.16"
+    }
+}

@@ -59,6 +59,11 @@ translate:
     id: aprsinject.worker1.time.run.handle
     name: aprsinject_handle
     vertical_label: "seconds"
+  capacity:
+    id: aprsinject.worker1.time.run.handle
+    name: aprsinject_cap
+    vertical_label: "seconds"
+    equation: 1 / x
   parse:
     id: aprsinject.worker1.time.aprs.parse
     name: aprsinject_parse

@@ -35,7 +35,21 @@ function reload_config() {
   $translate_table = array();
 
   foreach ($tt as $key => $value) {
-    $translate_table[$value["id"]] = $value;
+    $identifier = $value["id"];
+    if (array_key_exsists($translate_table, $identifier)) {
+      $v = &$translate_table[$identifier];
+      if (is_array($v)) {
+        array_push($v, $value);
+      } // if
+      else {
+        $tmp = $translate_table[$identifier];
+        $v = array($tmp, $value);
+      } // else
+
+      continue;
+    } // if
+
+    $translate_table[$identifier] = $value;
   } // for
 
   print_r($translate_table);
@@ -195,30 +209,37 @@ function graph_rrd($rrd_file, $label, $png_file, $vertical_label="unknown") {
 function add_data($json) {
   global $translate_table;
 
+  $path = "/var/www/html";
+
   echo "Looing for " . $json->id . "\n";
   if ( !array_key_exists($json->id, $translate_table) ) return;
   $table = $translate_table[$json->id];
-  $file = $table["name"];
 
-  print_r($json);
+  $work = is_array($table) ? $table : array($table);
 
+  foreach ($work AS $key => $obj) {
+    $file = $obj["name"];
 
-  echo "Writing to " . $file . "\n";
+    print_r($json);
 
-  $path = "/var/www/html";
+    echo "Writing to " . $file . "\n";
+
 //  $rrd_file = dirname(__FILE__) . "/rrd/$file.rrd";
 //  $png_file = dirname(__FILE__) . "/png/$file.png";
-  $rrd_file = $path . "/rrd/$file.rrd";
-  $png_file = $path . "/png/$file.png";
+    $rrd_file = $path . "/rrd/$file.rrd";
+    $png_file = $path . "/png/$file.png";
 
 //  $label = str_replace(" ", "", $json->label);
-  $label = $file;
+    $label = $file;
 
-  if (!file_exists($rrd_file)) {
-    // must create the rrd file
-    create_rrd($rrd_file, $label, $json);
-  } // if
-  update_rrd($rrd_file, $label, $json->timestamp, $json->value);
-  graph_rrd($rrd_file, $label, $png_file, $table["vertical_label"]);
+    if (!file_exists($rrd_file)) {
+      // must create the rrd file
+      create_rrd($rrd_file, $label, $json);
+    } // if
+
+    update_rrd($rrd_file, $label, $json->timestamp, $json->value);
+    graph_rrd($rrd_file, $label, $png_file, $obj["vertical_label"]);
+  } // foreach
+
 } // add_data
 
