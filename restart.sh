@@ -1,2 +1,2 @@
 #!/bin/bash
-kill -INT `cat stomprrd.php`
+kill -INT `cat stomprrd.pid`
