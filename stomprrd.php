@@ -246,7 +246,7 @@ function add_data($json) {
 
     if (isset($obj["equation"])) {
       $equation = $obj["equation"];
-      if (isset($obj["non-zero"] && $value == 0.0) echo "Skipping can't use equation with zero value\n";
+      if (isset($obj["non-zero"]) && $value == 0.0) echo "Skipping can't use equation with zero value\n";
       else {
         $parser = new StdMathParser();
         // Generate an abstract syntax tree

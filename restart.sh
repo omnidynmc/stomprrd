@@ -1,2 +1,2 @@
 #!/bin/bash
-kill -INT `cat stomprrd.pid`
+kill -9 `cat stomprrd.pid`
