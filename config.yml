@@ -21,10 +21,6 @@ time:
       name: aprsinject_msgin
       ylabel: "seconds"
       title: "Inject Message Time"
-    raw_insert:
-      id: store.time.sql.raw.insert
-      name: aprsinject_rawin
-      ylabel: "seconds"
     position_memcached_insert:
       id: store.time.memcached.position.insert
       name: aprsinject_mempos
@@ -87,6 +83,11 @@ rates:
       name: aprsinject_msgs
       ylabel: "rate"
       title: "Messages"
+    raw_insert:
+      id: store.time.sql.raw.insert
+      name: aprsinject_rawin
+      ylabel: "seconds"
+      title: "Raw"
 feed:
   title: APRS Feed
   data:
