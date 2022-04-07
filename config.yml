@@ -62,7 +62,7 @@ translate:
   capacity:
     id: aprsinject.worker1.time.run.handle
     name: aprsinject_cap
-    vertical_label: "seconds"
+    vertical_label: "pps"
     equation: 1 / x
   parse:
     id: aprsinject.worker1.time.aprs.parse
