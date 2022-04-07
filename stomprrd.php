@@ -109,7 +109,7 @@ while(1) {
       break;
     } // catch
 
-    if ($stomp == NULL) break;
+    if ($frame == NULL) break;
 
 //    echo $frame->body . "\n";
     $json = json_decode($frame->body);
