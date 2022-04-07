@@ -228,7 +228,7 @@ function add_data($json) {
   foreach ($work AS $obj) {
     $file = $obj["name"];
 
-    print_r($json);
+    print_r($obj);
 
     echo "Writing to " . $file . "\n";
 
