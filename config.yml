@@ -80,17 +80,17 @@ translate:
     ylabel: "pps"
     title: "APRSFeed Packets/s"
   preprocess:
-    id:  aprsinject.worker1.time.run.preprocess
+    id: aprsinject.worker1.time.run.preprocess
     name: aprsfeed_preproc
     ylabel: "seconds"
     title: "Preprocess Time"
   process:
-    id:  aprsinject.worker1.time.run.process
+    id: aprsinject.worker1.time.run.process
     name: aprsfeed_proc
     ylabel: "seconds"
     title: "Process Time"
   allinsert:
-    id:  aprsinject.worker1.time.run.insert
+    id: aprsinject.worker1.time.run.inject
     name: aprsfeed_insrt
-    ylabel: "pps"
+    ylabel: "seconds"
     title: "All Insert"
