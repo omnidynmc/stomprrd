@@ -7,6 +7,7 @@ translate:
     id: aprsinject.worker1.aprs_stats.rate.age
     name: aprsinject_age
     ylabel: "seconds"
+    title: "APRS Packet Age to Injector"
   packet_rate:
     id: aprsinject.worker1.aprs_stats.rate.packet
     name: aprsinject_packets
@@ -59,6 +60,7 @@ translate:
     id: aprsinject.worker1.time.run.handle
     name: aprsinject_handle
     ylabel: "seconds"
+    title: "APRS Injection Handle Time"
   capacity:
     id: aprsinject.worker1.time.run.handle
     name: aprsinject_cap
@@ -69,8 +71,9 @@ translate:
     id: aprsinject.worker1.time.aprs.parse
     name: aprsinject_parse
     ylabel: "seconds"
+    title: "APRS Parse Time"
   feed:
     id: aprsfeed.uplink1.num.packets
     name: aprsfeed_pps
     ylabel: "pps"
-    title: "Packets/s"
+    title: "APRSFeed Packets/s"
