@@ -68,3 +68,7 @@ translate:
     id: aprsinject.worker1.time.aprs.parse
     name: aprsinject_parse
     vertical_label: "seconds"
+  feed:
+    id: aprsfeed.uplink1.num.packets
+    name: aprsfeed_pps
+    vertical_label: "pps"
