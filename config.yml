@@ -30,27 +30,25 @@ time:
       name: aprsinject_mempos
       ylabel: "seconds"
       title: "Inject Memcached Lastposition"
-    handle:
-      id: aprsinject.worker1.time.run.handle
-      name: aprsinject_handle
-      ylabel: "seconds"
-      title: "APRS Injection Handle Time"
     capacity:
       id: aprsinject.worker1.time.run.handle
       name: aprsinject_cap
       ylabel: "pps"
       equation: 1 / x
       title: "APRSInjector Capacity"
-    parse:
-      id: aprsinject.worker1.time.aprs.parse
-      name: aprsinject_parse
-      ylabel: "seconds"
-      title: "APRS Parse Time"
     feed:
       id: aprsfeed.uplink1.num.packets
       name: aprsfeed_pps
       ylabel: "pps"
       title: "APRSFeed Packets/s"
+    allinsert:
+      id: aprsinject.worker1.time.run.inject
+      name: aprsfeed_insrt
+      ylabel: "seconds"
+      title: "All Insert"
+processing:
+  title: Processing
+  data:
     preprocess:
       id: aprsinject.worker1.time.run.preprocess
       name: aprsfeed_preproc
@@ -61,11 +59,16 @@ time:
       name: aprsfeed_proc
       ylabel: "seconds"
       title: "Process Time"
-    allinsert:
-      id: aprsinject.worker1.time.run.inject
-      name: aprsfeed_insrt
+    handle:
+      id: aprsinject.worker1.time.run.handle
+      name: aprsinject_handle
       ylabel: "seconds"
-      title: "All Insert"
+      title: "APRS Injection Handle Time"
+    parse:
+      id: aprsinject.worker1.time.aprs.parse
+      name: aprsinject_parse
+      ylabel: "seconds"
+      title: "APRS Parse Time"
 rates:
   title: APRS Rates
   data:
