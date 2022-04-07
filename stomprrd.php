@@ -274,7 +274,7 @@ function add_data($json) {
     } // if
 
     update_rrd($rrd_file, $label, $json->timestamp, $value);
-    graph_rrd($rrd_file, $label, $png_file, $work);
+    graph_rrd($rrd_file, $label, $png_file, $obj);
   } // foreach
 
 } // add_data
