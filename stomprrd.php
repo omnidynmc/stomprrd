@@ -1,6 +1,11 @@
 #!/usr/bin/php
 <?php
 
+use MathParser\StdMathParser;
+use MathParser\Interpreting\Evaluator;
+
+require("vendor/autoload.php");
+
 pcntl_async_signals(true);
 
 $queue  = '/topic/stats.prod.*';
@@ -237,7 +242,25 @@ function add_data($json) {
       create_rrd($rrd_file, $label, $json);
     } // if
 
-    update_rrd($rrd_file, $label, $json->timestamp, $json->value);
+    $value = $json->value;
+
+    if (isset($obj["equation"])) {
+      $equation = $obj["equation"];
+      if (isset($obj["non-zero"] && $value == 0.0) echo "Skipping can't use equation with zero value\n";
+      else {
+        $parser = new StdMathParser();
+        // Generate an abstract syntax tree
+        $AST = $parser->parse($equation);
+
+        // Do something with the AST, e.g. evaluate the expression:
+        $evaluator = new Evaluator();
+        $evaluator->setVariables(['x' => $value]);
+
+        $value = $AST->accept($evaluator);
+      } // if
+    } // if
+
+    update_rrd($rrd_file, $label, $json->timestamp, $value);
     graph_rrd($rrd_file, $label, $png_file, $obj["vertical_label"]);
   } // foreach
 
