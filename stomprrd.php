@@ -221,7 +221,7 @@ function add_data($json) {
   if ( !array_key_exists($json->id, $translate_table) ) return;
   $table = $translate_table[$json->id];
 
-  $work = is_array($table) ? $table : array($table);
+  $work = !array_key_exists("id", $table) ? $table : array($table);
 
   print_r($work);
 
