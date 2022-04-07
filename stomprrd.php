@@ -203,9 +203,10 @@ function graph_rrd($rrd_file, $label, $png_file, $vertical_label="unknown") {
     array(
         "--start" => time()-28800,
         "--end" => time(),
+        "--title=$label",
         "--vertical-label" => $vertical_label,
-        "DEF:my$label=$rrd_file:$label:AVERAGE",
-        "CDEF:$label=my$label,300,*",
+        "DEF:$label=$rrd_file:$label:AVERAGE",
+//        "CDEF:$label=my$label,300,*",
         "GPRINT:$label:AVERAGE:current %6.2lf",
         "LINE1:myspeed#FF0000"
     )
