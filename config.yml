@@ -75,15 +75,18 @@ rates:
     packet_rate:
       id: aprsinject.worker1.aprs_stats.rate.packet
       name: aprsinject_packets
-      ylabel: "seconds"
+      ylabel: "rate"
+      title: "Packets"
     position_rate:
       id: aprsinject.worker1.aprs_stats.rate.position
       name: aprsinject_position
       ylabel: "rate"
+      title: "Position"
     message_rate:
       id: aprsinject.worker1.aprs_stats.rate.message
       name: aprsinject_msgs
       ylabel: "rate"
+      title: "Messages"
 feed:
   title: APRS Feed
   data:
