@@ -218,7 +218,7 @@ function graph_rrd($rrd_file, $label, $png_file, $work) {
         "DEF:$label=$rrd_file:$label:AVERAGE",
 //        "CDEF:$label=my$label,300,*",
         "COMMENT:\\n",
-        "GPRINT:$label:AVERAGE:current %6.2lf",
+        "GPRINT:$label:LAST:current %6.3lf",
         "LINE1:$label#FF0000"
     )
   );
